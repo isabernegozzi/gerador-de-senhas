@@ -1,38 +1,73 @@
-const numeroSenha = document.querySelector(".parametros-senha__texto");
-const botaoSenha = document.querySelectorAll(".parametros-senha__botao");
-const campoSenha = document.querySelector("#campo-senha");
+<!DOCTYPE html>
+<html lang="pt-br">
 
-let tamanhoSenha = 4;
-numeroSenha.textContent = tamanhoSenha;
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de senha</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 
-//console.log(botaoSenha);
+<body>
+    <section class="conteudo">
+        <div class="conteudo-titulo">
+            <img src="unlock.svg" alt="cadeado fechado">
+            <h2 class="titulo-principal">Gerador de senhas</h2>
+            <h3 class="titulo-secundario">Gere instantaneamente uma senha aleatória e segura</h3>
+        </div>
+        <div class="conteudo-senha">
+            <label for="senha">Senha</label>
+            <input name="senha" type="text" id="campo-senha" readonly>
+        </div>
+        <div class="parametro">
+            <h3 class="parametro-titulo">Personalize sua senha</h3>
+            <div class="parametro-coluna__senha">
+                <div class="parametro-senha">
+                    <h4 class="parametro-senha__titulo">Número de caracteres</h4>
+                    <div class="parametros-senha-botoes">
+                        <button class="parametros-senha__botao">-</button>
+                        <p class="parametros-senha__texto">12</p>
+                        <button class="parametros-senha__botao">+</button>
+                    </div>
+                </div>
+                <div class="parametro-senha">
+                    <h4 class="parametro-senha__titulo">Características da senha</h4>
 
-botaoSenha[0].onclick = diminuiTamanhoSenha = () => {
-    if (tamanhoSenha > 1) {
-        tamanhoSenha--;
-    }
-    numeroSenha.textContent = tamanhoSenha;
-    gerarSenha();
-};
+                    <div class="parametro-senha-checkbox">
+                        <input type="checkbox" name="caracteristicas" class="checkbox">
+                        <label for="caracteristicas" class="parametros-senha__checkbox"> letras maiúsculas</label>
+                    </div>
 
-botaoSenha[1].onclick = aumentaTamanhoSenha = () => {
-    if (tamanhoSenha < 20) {
-        tamanhoSenha++;
-    }
-    numeroSenha.textContent = tamanhoSenha;
-    gerarSenha();
-};
+                    <div class="parametro-senha-checkbox">
+                        <input type="checkbox" name="caracteristicas" class="checkbox">
+                        <label for="caracteristicas2" class="parametros-senha__checkbox"> letras minúsculas</label>
+                    </div>
 
-const letrasMaiusculas = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-campoSenha.value = letrasMaiusculas;
-gerarSenha();
+                    <div class="parametro-senha-checkbox">
+                        <input type="checkbox" name="caracteristicas" class="checkbox">
+                        <label for="caracteristicas3" class="parametros-senha__checkbox"> números</label>
+                    </div>
 
-function gerarSenha() {
-    let senhaGerada = "";
-    for (let i = 0; i < tamanhoSenha; i++) {
-        let numeroAleatorio = Math.floor(Math.random() * letrasMaiusculas.length);
-        //console.log(letrasMaiusculas[numeroAleatorio]);
-        senhaGerada += letrasMaiusculas[numeroAleatorio];
-    }
-    campoSenha.value = senhaGerada;
-}
+                    <div class="parametro-senha-checkbox">
+                        <input type="checkbox" name="caracteristicas" class="checkbox">
+                        <label for="caracteristicas4" class="parametros-senha__checkbox"> símbolos</label>
+                    </div>
+                </div>
+                <div class="parametro-senha">
+                    <h4 class="parametro-senha__titulo">Força da senha</h4>
+                    <div class="barra"></div>
+                    <div class="forca forte"></div> <!-- atualiza barra de força -->
+                    <div class="parametro-senha-textos">
+                        <p>Fraca</p>
+                        <p>Média</p>
+                        <p>Forte</p>
+                    </div>
+                    <p class="entropia">Tempo estimado para crackear : <span id="entropia">0</span> dias</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="main.js"></script>
+</body>
+
+</html>
